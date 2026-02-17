@@ -1,4 +1,4 @@
-git {
+ {
   "name": "github-scan-without-uploading-artifacts",
   "version": "1.0.0",
   "private": true,
