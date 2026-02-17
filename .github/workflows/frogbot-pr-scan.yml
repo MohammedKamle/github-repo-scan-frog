@@ -14,6 +14,7 @@ permissions:
 jobs:
   scan-pull-request:
     runs-on: ubuntu-latest
+    environment: frogbot
     steps:
       - name: Run Frogbot PR scan
         uses: jfrog/frogbot@v2
