@@ -1,0 +1,15 @@
+# JFrog Frogbot Configuration
+# Docs: https://docs.jfrog-applications.jfrog.io/jfrog-applications/frogbot
+
+- params:
+    git:
+      repoName: github-scan-without-uploading-artifacts
+      branches:
+        - main
+
+    scan:
+      failOnSecurityIssues: false
+
+    projects:
+      - workingDirs:
+          - .
