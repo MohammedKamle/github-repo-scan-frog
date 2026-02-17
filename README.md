@@ -17,6 +17,8 @@ See `docs/no-upload-proof.md` for verification details.
 
 ## Repository layout
 
+- `package.json` - intentionally vulnerable Node.js dependency set for SCA demo
+- `src/server.js` - intentionally insecure API routes for SAST demo
 - `scripts/local-scan.sh` - local CLI demo automation
 - `.github/workflows/frogbot-pr-scan.yml` - PR scan workflow
 - `.github/workflows/frogbot-repo-scan.yml` - repository scan workflow
@@ -24,10 +26,21 @@ See `docs/no-upload-proof.md` for verification details.
 - `docs/no-upload-proof.md` - how to verify scan-only behavior
 - `docs/demo-flow.md` - 5-10 minute live demo narrative
 
+## Built-in Node.js demo project (this repo)
+
+This repository now contains a demo Node.js app with intentionally vulnerable dependencies and insecure code paths so you can demo SCA/SAST directly from this repo.
+
+```bash
+npm install
+npm start
+```
+
+Main file: `src/server.js`
+
 ## Prerequisites
 
 1. JFrog Platform URL and access token with Xray/Advanced Security access.
-2. GitHub repository you want to scan.
+2. A GitHub repository to scan (you can use this repository).
 3. Local tools for CLI path:
    - `git`
    - `jf` (JFrog CLI)
@@ -69,12 +82,12 @@ The script writes results under `./scan-output/<repo>-<timestamp>/`:
 
 ## Path B: GitHub Actions demo (Frogbot)
 
-1. Copy the two workflow files in `.github/workflows/` into the target GitHub repo.
+1. Use this repo as target, or copy `.github/workflows/` into another target repo.
 2. Add required secrets in the target repo:
    - `FROGBOT_URL`
    - `FROGBOT_ACCESS_TOKEN`
 3. Open a PR to trigger PR scan workflow.
-4. Trigger the repository scan via manual dispatch (or scheduled cron).
+4. Trigger the repository scan via manual dispatch (on-demand).
 
 Frogbot setup details: `docs/secrets-and-prereqs.md`.
 

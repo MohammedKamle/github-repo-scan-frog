@@ -1,0 +1,21 @@
+{
+  "name": "github-scan-without-uploading-artifacts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Intentionally vulnerable Node.js sample project for JFrog SCA/SAST demos.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "demo:run": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "0.21.0",
+    "express": "4.17.1",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "4.17.20",
+    "minimist": "0.0.8"
+  }
+}
