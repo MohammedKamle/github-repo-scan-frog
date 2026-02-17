@@ -1,0 +1,29 @@
+name: Frogbot Repository Scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: Base branch to scan
+        required: false
+        default: main
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  security-events: write
+
+jobs:
+  scan-repository:
+    runs-on: ubuntu-latest
+    env:
+      BASE_BRANCH: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.base_branch || 'main' }}
+    steps:
+      - name: Run Frogbot repository scan
+        uses: jfrog/frogbot@v2
+        env:
+          JF_URL: ${{ secrets.FROGBOT_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.FROGBOT_ACCESS_TOKEN }}
+          JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JF_GIT_BASE_BRANCH: ${{ env.BASE_BRANCH }}

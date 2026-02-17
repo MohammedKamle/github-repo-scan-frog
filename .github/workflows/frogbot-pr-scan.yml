@@ -1,0 +1,23 @@
+name: Frogbot PR Scan
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  scan-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Frogbot PR scan
+        uses: jfrog/frogbot@v2
+        env:
+          JF_URL: ${{ secrets.FROGBOT_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.FROGBOT_ACCESS_TOKEN }}
+          JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
