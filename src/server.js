@@ -15,7 +15,7 @@ const _ = require("lodash");
 const app = express();
 app.use(express.json());
 
-// Intentionally insecure demo values to trigger security scanners.
+// Intentionally insecure demo values to trigger security scanners.w
 const DEMO_AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE";
 
 app.get("/health", (_req, res) => {
